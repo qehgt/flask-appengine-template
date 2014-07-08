@@ -50,7 +50,7 @@
             <i class="icon-plus-sign icon-white"></i>
             New example
         </a>
-        <a class="btn btn-primary" data-toggle="modal" data-target="#new-dialog-modal">
+        <a class="btn btn-primary" data-target="#new-dialog-modal" href="{{ url_for('show_new_dialog') }}" </a>
             <i class="icon-plus-sign icon-white"></i>
             New button
         </a>
@@ -62,7 +62,6 @@
 
 {% block footer %}
     {% include 'new_example.html' %} {# pull in new_example form (modal dialog) #}
-    {% include 'new_dialog.html' %}  {# pull in new_dialog form (modal dialog) #}
 {% endblock footer %}
 
 {% block tail_script %}

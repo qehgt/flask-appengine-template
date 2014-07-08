@@ -17,7 +17,7 @@ from flask_cache import Cache
 
 from application import app
 from decorators import login_required, admin_required
-from forms import ExampleForm
+from forms import ExampleForm, NewDialogForm
 from models import ExampleModel
 
 
@@ -68,6 +68,15 @@ def edit_example(example_id):
             flash(u'Example %s successfully saved.' % example_id, 'success')
             return redirect(url_for('list_examples'))
     return render_template('edit_example.html', example=example, form=form)
+
+def show_new_dialog():
+    print "in show_new_dialog()", "method = ", request.method
+    form = NewDialogForm()
+    if request.method == "POST":
+        if form.validate_on_submit():
+            print "in show_new_dialog().validate"
+            return redirect(url_for('list_examples'))
+    return render_template('new_dialog.html', form=form)
 
 
 @login_required

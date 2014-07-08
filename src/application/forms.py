@@ -24,3 +24,8 @@ ExampleForm = model_form(ExampleModel, wtf.Form, field_args={
     'example_name': dict(validators=[validators.Required()]),
     'example_description': dict(validators=[validators.Required()]),
 })
+
+class NewDialogForm(wtf.Form):
+    some_text = wtf.TextField('Some Text Field', validators=[validators.Required()])
+
+
