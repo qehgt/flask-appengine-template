@@ -1,0 +1,23 @@
+<div class="modal fade" id="new-dialog-modal">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h3>New Dialog</h3>
+    </div>
+    <div class="modal-body">
+        <form id="new-dialog-form" class="well form-horizontal"
+            action="{{ url_for('list_examples') }}" method="post" accept-charset="utf-8">
+            <fieldset>
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    </div>
+    </div>
+</div>
+
