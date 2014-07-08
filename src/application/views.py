@@ -72,6 +72,7 @@ def edit_example(example_id):
 def show_new_dialog():
     print "in show_new_dialog()", "method = ", request.method
     form = NewDialogForm()
+    form.some_text.data = "Hello, World"
     if request.method == "POST":
         if form.validate_on_submit():
             print "in show_new_dialog().validate"

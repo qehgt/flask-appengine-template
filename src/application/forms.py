@@ -27,5 +27,6 @@ ExampleForm = model_form(ExampleModel, wtf.Form, field_args={
 
 class NewDialogForm(wtf.Form):
     some_text = wtf.TextField('Some Text Field', validators=[validators.Required()])
-
-
+    combobox = wtf.SelectField('Combobox',
+                               choices = [(1, 'one'), (2, 'two'), (3, 'three')],
+                               validators=[validators.Optional()])

@@ -1,4 +1,13 @@
 <form method="POST" action="/show_new_dialog">
     {{ form.some_text.label }} {{ form.some_text(size=20) }}
+    <input list="combo_data" name="combo">
+
+    <datalist id="combo_data">
+      <option></option>
+      {% for subfield in form.combobox %}
+      {{  subfield }}
+      {% endfor %}
+    </datalist>
+    
     <input type="submit" value="Go">
 </form>
