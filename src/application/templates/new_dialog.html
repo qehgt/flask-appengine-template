@@ -1,13 +1,55 @@
-<form method="POST" action="/show_new_dialog">
-    {{ form.some_text.label }} {{ form.some_text(size=20) }}
-    <input list="combo_data" name="combo">
+<form action="{{ url_for('show_new_dialog') }}" method="post">
+  <fieldset>
+    {{ form.hidden_tag() }}
+    <input type="hidden" name="mode" value="edit" />
 
-    <datalist id="combo_data">
+    <legend>Enter Data:</legend>
+    <br>
+    {{ form.cmb_map.label|safe }}
+    <input list="cmb1_data" name="cmb_map">
+    <datalist id="cmb1_data">
       <option></option>
-      {% for subfield in form.combobox %}
+      {% for subfield in form.cmb_map %}
       {{  subfield }}
       {% endfor %}
     </datalist>
-    
-    <input type="submit" value="Go">
+    {% if form.cmb_map.errors %}
+    <ul class="errors">
+      {% for error in form.cmb_map.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {{ form.cmb_unit.label|safe }}
+    <input list="cmb2_data" name="cmb_unit">
+    <datalist id="cmb2_data">
+      <option></option>
+      {% for subfield in form.cmb_unit %}
+      {{  subfield }}
+      {% endfor %}
+    </datalist>
+    {% if form.cmb_unit.errors %}
+    <ul class="errors">
+      {% for error in form.cmb_unit.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <br>
+    <br>
+    {{ form.text_description.label|safe }}
+    <br>
+    {{ form.text_description|safe }}
+    {% if form.text_description.errors %}
+    <ul class="errors">
+      {% for error in form.text_description.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </fieldset>
+  <input type="submit" value="Submit">
 </form>

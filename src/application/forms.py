@@ -26,7 +26,13 @@ ExampleForm = model_form(ExampleModel, wtf.Form, field_args={
 })
 
 class NewDialogForm(wtf.Form):
-    some_text = wtf.TextField('Some Text Field', validators=[validators.Required()])
-    combobox = wtf.SelectField('Combobox',
-                               choices = [(1, 'one'), (2, 'two'), (3, 'three')],
-                               validators=[validators.Optional()])
+    cmb_map = wtf.SelectField('Map:',
+                              choices = [('Map one', 'Map one'), ('Map two', 'Map two'), ('Map three', ' Map three')],
+                              validators=[validators.Required()])
+
+    cmb_unit = wtf.SelectField('Unit:',
+                               choices = [('Unit one', 'Unit one'), ('Unit two', 'Unit two'), ('Unit three', ' Unit three')],
+                               validators=[validators.Required()])
+
+    text_description = wtf.TextAreaField('Description:', validators=[validators.Required()])
+

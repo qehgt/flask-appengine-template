@@ -69,13 +69,12 @@ def edit_example(example_id):
             return redirect(url_for('list_examples'))
     return render_template('edit_example.html', example=example, form=form)
 
+@login_required
 def show_new_dialog():
-    print "in show_new_dialog()", "method = ", request.method
+    """Test function for my simple form"""
     form = NewDialogForm()
-    form.some_text.data = "Hello, World"
     if request.method == "POST":
         if form.validate_on_submit():
-            print "in show_new_dialog().validate"
             return redirect(url_for('list_examples'))
     return render_template('new_dialog.html', form=form)
 
