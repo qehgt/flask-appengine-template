@@ -39,6 +39,9 @@ app.add_url_rule('/examples/<int:example_id>/delete', view_func=views.delete_exa
 # Show New Dialog
 app.add_url_rule('/show_new_dialog', view_func=views.show_new_dialog, methods=['GET', 'POST'])
 
+# Show Quick List
+app.add_url_rule('/quick_list', view_func=views.quick_list, methods=['GET'])
+
 
 ## Error handlers
 # Handle 404 errors

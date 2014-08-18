@@ -36,3 +36,8 @@ class NewDialogForm(wtf.Form):
 
     text_description = wtf.TextAreaField('Description:', validators=[validators.Required()])
 
+class QuickListForm(wtf.Form):
+    cmb_map = wtf.SelectField('Map:',
+                              choices = [])
+
+    text_description = wtf.TextField('Select map:')

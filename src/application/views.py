@@ -17,9 +17,8 @@ from flask_cache import Cache
 
 from application import app
 from decorators import login_required, admin_required
-from forms import ExampleForm, NewDialogForm
+from forms import ExampleForm, NewDialogForm, QuickListForm
 from models import ExampleModel
-
 
 # Flask-Cache (configured to use App Engine Memcache API)
 cache = Cache(app)
@@ -77,6 +76,17 @@ def show_new_dialog():
         if form.validate_on_submit():
             return redirect(url_for('list_examples'))
     return render_template('new_dialog.html', form=form)
+
+@login_required
+def quick_list():
+    """Test function for my simple form"""
+    form = QuickListForm()
+    examples = ExampleModel.query()
+    form.cmb_map.choices = []
+    for example in examples:
+        form.cmb_map.choices.append((example.example_description, example.example_name))
+
+    return render_template('quick_list.html', form=form)
 
 
 @login_required

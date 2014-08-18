@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script>
+function onChangeCmbMap(val)
+{
+var elem = document.getElementById("description");
+elem.value=val
+}
+</script>
+
+<form action="{{ url_for('list_examples') }}" method="post">
+  <td>
+    <a class="btn btn-primary" href="{{ url_for('list_examples') }}">Back</a>
+  </td>
+  <fieldset>
+    <br>
+    {{ form.text_description.label|safe }}
+    <br>
+    {{ form.cmb_map(**{'onchange':'onChangeCmbMap(this.value)'})|safe }}
+    <br>
+    <br>
+    Result:
+    <br>
+    <textarea name="description" id="description" value="" rows="10"></textarea>
+  </fieldset>
+</form>
+
+{% endblock content %}
