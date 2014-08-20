@@ -21,8 +21,8 @@ class ClassicExampleForm(wtf.Form):
 
 # App Engine ndb model form example
 ExampleForm = model_form(ExampleModel, wtf.Form, field_args={
-    'example_name': dict(validators=[validators.Required()]),
-    'example_description': dict(validators=[validators.Required()]),
+    'example_name': dict(validators=[validators.Required()], label='Map Name'),
+    'example_description': dict(validators=[validators.Required()], label='Map Description'),
 })
 
 class NewDialogForm(wtf.Form):
